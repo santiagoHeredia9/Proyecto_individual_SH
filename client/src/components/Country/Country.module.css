@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    padding-right: 30px;
+    gap: 20px;
+    box-shadow: 5px 5px 5px 5px rgb(211, 211, 211);
+    border-radius: 10px;
+    width: 400px;
+    height: 150px;
+    
+}
+
+.container img{
+    width: 200px;
+    height: 150px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    margin: 0;
+}
+
