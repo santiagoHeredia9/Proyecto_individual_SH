@@ -3,6 +3,7 @@ import { Landing } from "../components/Landing/Landing";
 import { NavBar } from "../components/Navbar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../components/Home/Home";
+import { CountryDetail } from "../components/CountryDetail/CountryDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/detail/:id" element={<CountryDetail />} />
         </Routes>
       </section>
     </>

@@ -1,19 +1,62 @@
-.container{
-    display: flex;
-    padding-right: 30px;
-    gap: 20px;
-    box-shadow: 5px 5px 5px 5px rgb(211, 211, 211);
-    border-radius: 10px;
-    width: 400px;
-    height: 150px;
-    
+.container {
+  display: flex;
+  position: relative;
+  padding-right: 30px;
+  gap: 20px;
+  box-shadow: 4px 4px 4px 4px rgba(130, 54, 13, 0.364);
+  border-radius: 10px;
+  width: 420px;
+  height: 150px;
+  transition: all 0.2s ease-in;
+  background-color: rgb(255, 255, 255);
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 4px 4px 4px 4px rgba(130, 54, 13, 0.567);
+  }
 }
 
-.container img{
-    width: 200px;
-    height: 150px;
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
-    margin: 0;
+.container img {
+  width: 220px;
+  height: 150px;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+  margin: 0;
 }
 
+.container button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 25px;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgb(93, 93, 93);
+  color: white;
+  &:hover {
+    background-color: brown;
+    cursor: pointer;
+  }
+}
+
+
+
+.details{
+  text-decoration: none;
+  color: rgb(13, 13, 13);
+  font-weight: 500;
+  &:hover{
+    color: rgb(46, 137, 217);
+  }
+}
+
+.containerView {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+  &:hover {
+    opacity: 1;
+  }
+}

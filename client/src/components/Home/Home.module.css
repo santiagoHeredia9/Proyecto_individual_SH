@@ -1,8 +1,21 @@
-.cardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: center;
+  align-items: start;
+  gap: 60px;
+  max-width: 1700px;
+}
+
+.searchContainer {
+  padding-bottom: 100px;
+}
+
+.changer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
 }

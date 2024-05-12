@@ -1,27 +1,25 @@
 // import styles from "./SearchBar.module.css";
-import axios from "axios";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { byName } from "../../redux/actions";
+import styles from "./SearchBar.module.css";
 
-export const SearchBar = (props) => {
+export const SearchBar = () => {
   const [data, setData] = useState("");
+
+  const dispatch = useDispatch();
+
   const handleData = (e) => {
     setData(e.target.value);
   };
+
   const searchCountry = (e) => {
     e.preventDefault();
-    data &&
-      axios(`http://localhost:3001/countries/name?name=${data}`)
-        .then((response) => {
-          if (response && response.data) {
-            props.setCountries(response.data); // Verifica que response.data exista
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    data && dispatch(byName(data));
   };
+
   return (
-    <form action="">
+    <form className={styles.container}>
       <input type="search" value={data} onChange={handleData} />
       <button onClick={searchCountry}>Buscar</button>
     </form>
