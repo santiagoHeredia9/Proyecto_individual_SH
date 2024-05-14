@@ -5,12 +5,14 @@ const getByName = require("../controllers/getByName");
 const postActivities = require("../controllers/postActivities");
 const getActivities = require("../controllers/getActivities");
 const limitedCountries = require("../controllers/limitedCountries");
+const filterByContinent = require("../controllers/filterByContinent");
 
 const router = Router();
 router.get("/countries", getCountries);
 router.get("/countries/limited", limitedCountries);
 router.get("/countries/name", getByName);
 router.get("/countries/:id", getById);
+router.post("/countries/filterByContinent", filterByContinent);
 router.post("/activities", postActivities);
 router.get("/activities", getActivities);
 
