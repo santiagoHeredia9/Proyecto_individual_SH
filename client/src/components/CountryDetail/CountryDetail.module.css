@@ -24,7 +24,7 @@
     position: relative;
     z-index: 1;
     height: 720px;
-    width: 520px;
+    width: 510px;
 }
 
 
@@ -50,7 +50,7 @@
     position: relative;
     z-index: 1;
     height: 720px;
-    width: 520px;
+    width: 510px;
 }
 
 
@@ -67,4 +67,18 @@
     right: 30px;
     opacity: 0.5;
     transform: scaleX(-1);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1.5rem;
+    color: rgb(63, 10, 10);
+}
+
+
+
+.name{
+    font-size: 2.5rem;
 }

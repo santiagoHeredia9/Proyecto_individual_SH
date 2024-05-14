@@ -2,6 +2,7 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { byName } from "../../redux/actions";
+import Search from "../Icons/Search";
 import styles from "./SearchBar.module.css";
 
 export const SearchBar = () => {
@@ -21,7 +22,7 @@ export const SearchBar = () => {
   return (
     <form className={styles.container}>
       <input type="search" value={data} onChange={handleData} />
-      <button onClick={searchCountry}>Buscar</button>
+      <a href="#" onClick={searchCountry}><Search className={styles.lupe} /></a>
     </form>
   );
 };

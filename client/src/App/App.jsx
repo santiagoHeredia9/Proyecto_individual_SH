@@ -4,6 +4,7 @@ import { NavBar } from "../components/Navbar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../components/Home/Home";
 import { CountryDetail } from "../components/CountryDetail/CountryDetail";
+import { Activity } from "../components/Activity/Activity";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/detail/:id" element={<CountryDetail />} />
+          <Route path="/form" element={<Activity />} />
         </Routes>
       </section>
     </>

@@ -11,6 +11,21 @@ export const CountryDetail = () => {
 
   const { id } = useParams();
 
+  function formatearPoblacion(numero) {
+    if (numero >= 1000000) {
+      return (
+        (numero / 1000000).toLocaleString("es-ES", {
+          minimumFractionDigits: 3,
+        }) + "M"
+      );
+    } else {
+      return (
+        (numero / 1000).toLocaleString("es-ES", { minimumFractionDigits: 3 }) +
+        "K"
+      );
+    }
+  }
+
   useEffect(() => {
     dispatch(byId(id));
   }, [id]);
@@ -21,19 +36,32 @@ export const CountryDetail = () => {
         <div className={styles.book2}>
           <div className={styles.book}>
             <div>
-              <img src={country?.flag} alt={country?.name} />
+              <img src={country.flag} alt={country.name} />
             </div>
             <div>
-              <h2>{country?.name} </h2>
+              <h2 className={styles.name}>{country.name} </h2>
             </div>
           </div>
         </div>
         <div className={styles.book4}>
           <div className={styles.book3}>
-            <div>
-              <p>Population: {country?.population} </p>
-              <p>Capital: {country?.capital} </p>
-              <p>{country?.activity}</p>
+            <div className={styles.info}>
+              <p>
+                ID: <strong>{country.id}</strong>
+              </p>
+
+              <p>
+                Capital: <strong>{country?.capital}</strong>{" "}
+              </p>
+
+              <p>
+                Continent: <strong>{country.continent}</strong>
+              </p>
+
+              <p>
+                Population:{" "}
+                <strong>{formatearPoblacion(country.population)}</strong>{" "}
+              </p>
             </div>
           </div>
         </div>

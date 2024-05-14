@@ -5,6 +5,9 @@ export const BY_NAME = "BY_NAME";
 export const FETCH = "FETCH";
 export const DELETE = "DELETE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
+export const FILTER = "FILTER";
+export const FILTER_ALL = "FILTER_ALL";
+
 
 export const fetchCountries = () => {
   return async (dispatch) => {
@@ -68,3 +71,19 @@ export const changePage = (page) => {
     payload: page,
   };
 };
+
+export const filter = (currentCountries) => {
+  return {
+    type: FILTER,
+    payload: currentCountries,
+    
+  };
+};
+
+export const filterAll = () => {
+  return {
+    type: FILTER_ALL,
+  };
+};
+
+

@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Home.module.css";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { changePage, fetchCountries } from "../../redux/actions";
+import { Filters } from "../Filters/Filters";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.allCountries);
+  const allCountries = useSelector((state) => state.allCountries);
+  const countries = useSelector((state) => state.countries);
   const countriesPerPage = useSelector((state) => state.countriesPerPage);
   const currentPage = useSelector((state) => state.currentPage);
 
@@ -19,16 +21,20 @@ export const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchCountries());
-  }, []);
+    if (allCountries.length === 0) {
+      dispatch(fetchCountries());
+    }
+  }, [allCountries.length]);
 
   return (
     <>
-    
       <aside className={styles.searchContainer}>
         <SearchBar />
       </aside>
-      <main >
+      <aside>
+        <Filters allCountries={allCountries} />
+      </aside>
+      <main>
         <div className={styles.cardContainer}>
           {currentCountries.length > 0 ? (
             currentCountries.map((country) => (

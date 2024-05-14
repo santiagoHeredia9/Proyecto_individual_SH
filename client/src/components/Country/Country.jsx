@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { deleteCountry } from "../../redux/actions";
 
 import styles from "./Country.module.css";
@@ -18,7 +19,7 @@ export const Country = (props) => {
         
       </div>
 
-      <button onClick={() => dispatch(deleteCountry(props.id))}>x</button>
+      <button onClick={() => dispatch(deleteCountry(props.id))}>×</button>
     </div>
   );
 };

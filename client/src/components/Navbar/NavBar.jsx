@@ -20,7 +20,7 @@ export const NavBar = () => {
           <h5 className={styles.navItem}>About</h5>
         </NavLink>
 
-        <NavLink to="/activities" activeClassName={styles.activeLink}>
+        <NavLink to="/form" activeClassName={styles.activeLink}>
           <h5 className={styles.navItem}>Activities</h5>
         </NavLink>
       </div>
