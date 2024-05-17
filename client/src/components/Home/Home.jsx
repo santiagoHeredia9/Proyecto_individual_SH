@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { changePage, fetchCountries } from "../../redux/actions";
 import { Filters } from "../Filters/Filters";
+import Arrow from "../Icons/Arrow";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const Home = () => {
     if (allCountries.length === 0) {
       dispatch(fetchCountries());
     }
-  }, [allCountries.length]);
+  }, []);
 
   return (
     <>
@@ -56,13 +57,14 @@ export const Home = () => {
             onClick={() => dispatch(changePage(currentPage - 1))}
             disabled={currentPage === 1}
           >
+            <Arrow className={styles.prev} />
             Prev
           </button>
           <button
             onClick={() => dispatch(changePage(currentPage + 1))}
             disabled={indexOfLastCountry >= countries.length}
           >
-            Next
+            Next <Arrow className={styles.next} />
           </button>
         </article>
       </main>

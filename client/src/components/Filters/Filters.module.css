@@ -1,0 +1,30 @@
+.container {
+  padding-bottom: 100px;
+}
+
+.container select {
+  height: 30px;
+  background-color: rgb(145, 120, 101);
+  border-radius: 7px;
+  color: white;
+  border: none;
+}
+
+.select2 {
+ 
+  margin-left: 10px;
+  transition: all 0.2s ease-in;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.select1 {
+  margin-right: 10px;
+  transition: all 0.2s ease-in;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}

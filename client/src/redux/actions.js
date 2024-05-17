@@ -7,14 +7,14 @@ export const DELETE = "DELETE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const FILTER = "FILTER";
 export const FILTER_ALL = "FILTER_ALL";
-
+export const ORDER_BY = "ORDER_BY";
+export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 
 export const fetchCountries = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        "http://localhost:3001/countries/limited?limit=10"
-      );
+      const { data } = await axios("http://localhost:3001/countries/limited");
 
       return dispatch({
         type: FETCH,
@@ -72,11 +72,10 @@ export const changePage = (page) => {
   };
 };
 
-export const filter = (currentCountries) => {
+export const filter = (continent) => {
   return {
     type: FILTER,
-    payload: currentCountries,
-    
+    payload: continent,
   };
 };
 
@@ -86,4 +85,33 @@ export const filterAll = () => {
   };
 };
 
+export const getActivities = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios("http://localhost:3001/activities");
+      return dispatch({
+        type: GET_ACTIVITIES,
+        payload: data,
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+};
 
+export const deleteActivity = (id) => {
+ return{
+  type: DELETE_ACTIVITY,
+  payload: id
+ }
+};
+
+export const orderCountries = (order, direction) => {
+  return {
+    type: ORDER_BY,
+    payload: {
+      order,
+      direction,
+    },
+  };
+};

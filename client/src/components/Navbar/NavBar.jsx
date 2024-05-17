@@ -12,15 +12,15 @@ export const NavBar = () => {
       </div>
 
       <div className={styles.navItems}>
-        <NavLink to="/home" activeClassName={styles.activeLink}>
+        <NavLink to="/home" >
           <h5 className={styles.navItem}>Home</h5>
         </NavLink>
 
-        <NavLink to="/about" activeClassName={styles.activeLink}>
-          <h5 className={styles.navItem}>About</h5>
+        <NavLink to="/form" >
+          <h5 className={styles.navItem}>Form</h5>
         </NavLink>
 
-        <NavLink to="/form" activeClassName={styles.activeLink}>
+        <NavLink to="/activities" >
           <h5 className={styles.navItem}>Activities</h5>
         </NavLink>
       </div>

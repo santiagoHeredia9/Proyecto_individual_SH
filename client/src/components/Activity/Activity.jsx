@@ -1,28 +1,81 @@
-import axios from "axios";
-import { Form } from "../components/Form/Form";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteActivity, getActivities } from "../../redux/actions";
+import { useEffect } from "react";
+import styles from "./Activity.module.css";
 
 export const Activity = () => {
-  let flag = false;
-  const activities = axios("http://localhost:3001/activities");
+  const dispatch = useDispatch();
+  const activities = useSelector((state) => state.activities);
+  console.log(activities);
+
+  useEffect(() => {
+    dispatch(getActivities());
+  }, []);
+
+  const deleteActivities = (id) => {
+    dispatch(deleteActivity(id));
+  };
+
+  const getDifficultyStyle = (difficulty) => {
+    switch (difficulty) {
+      case "1":
+        return styles.easy;
+      case "2":
+        return styles.easy2;
+      case "3":
+        return styles.mid;
+      case "4":
+        return styles.hard;
+      default:
+        return styles.hard2;
+    }
+  };
+
   return (
-    <>
-      <h1></h1>
-      {activities ? (
+    <div className={styles.container}>
+      {Object.keys(activities).length !== 0 ? (
         activities.map((activity) => (
-          <div key={activity.id}>
-            <p>{activity.name}</p>
-            <p>{activity.difficulty}</p>
-            <p>{activity.season}</p>
-            <p>{activity.countries}</p>
+          <div className={styles.containerActivity} key={activity.id}>
+            <div className={styles.activity}>
+              <p>Activity: {activity.name}</p>
+              <button
+                className={styles.delete}
+                onClick={() => deleteActivities(activity.id)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className={styles.accordion}>
+              <div className={styles.info}>
+                <p>
+                  Difficulty:{" "}
+                  <strong className={getDifficultyStyle(activity.difficulty)}>
+                    {activity.difficulty}
+                  </strong>
+                </p>
+                <p>Season: {activity.season}</p>
+              </div>
+              <div className={styles.country}>
+                {activity.Countries.map((country) => (
+                  <div className={styles.flag} key={country.id}>
+                    <img src={country.flag} alt={country.name} />
+                    <p>{country.id}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ))
       ) : (
-        <div>
+        <div className={styles.noActivities}>
           <p>You dont have any activities yet, do you want to create one? </p>
-          <button onClick={() => (flag = !flag)}>Here!</button>
-          {flag && <Form />}
+          <Link to="/form">
+            <button>Here!</button>
+          </Link>
         </div>
       )}
-    </>
+    </div>
   );
 };

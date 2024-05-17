@@ -14,15 +14,15 @@ export const SearchBar = () => {
     setData(e.target.value);
   };
 
-  const searchCountry = (e) => {
-    e.preventDefault();
+  const searchCountry = () => {
+    
     data && dispatch(byName(data));
   };
 
   return (
-    <form className={styles.container}>
+    <div className={styles.container}>
       <input type="search" value={data} onChange={handleData} />
       <a href="#" onClick={searchCountry}><Search className={styles.lupe} /></a>
-    </form>
+    </div>
   );
 };

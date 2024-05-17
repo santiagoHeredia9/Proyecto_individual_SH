@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {
   DELETE,
   FETCH,
@@ -6,11 +7,15 @@ import {
   BY_ID,
   FILTER,
   FILTER_ALL,
+  GET_ACTIVITIES,
+  ORDER_BY,
+  DELETE_ACTIVITY,
 } from "./actions";
 
 const initialState = {
   allCountries: [],
   countries: [],
+  activities: [],
   countryDetail: {},
   countriesPerPage: 10,
   currentPage: 1,
@@ -59,7 +64,9 @@ export const reducer = (state = initialState, action) => {
     case FILTER:
       return {
         ...state,
-        countries: action.payload,
+        countries: state.allCountries.filter(
+          (country) => country.continent === action.payload
+        ),
         currentPage: 1,
       };
 
@@ -67,6 +74,33 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: state.allCountries,
+      };
+
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
+
+    case ORDER_BY:
+      const { order, direction } = action.payload;
+      const sorted = [...state.allCountries].sort((a, b) => {
+        if (direction === "ASC") {
+          return a[order] > b[order] ? 1 : -1;
+        } else {
+          return a[order] < b[order] ? 1 : -1;
+        }
+      });
+      return {
+        ...state,
+        countries: sorted,
+        currentPage: 1,
+      };
+
+    case DELETE_ACTIVITY:
+      return {
+        ...state,
+        activities: state.activities.filter((act) => act.id !== action.payload),
       };
     default:
       return state;

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "../components/Home/Home";
 import { CountryDetail } from "../components/CountryDetail/CountryDetail";
 import { Activity } from "../components/Activity/Activity";
+import { Form } from "../components/Form/Form";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/detail/:id" element={<CountryDetail />} />
-          <Route path="/form" element={<Activity />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/activities" element={<Activity />} />
         </Routes>
       </section>
     </>

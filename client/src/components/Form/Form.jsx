@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { validate } from "./validate";
+import styles from "./Form.module.css";
 import axios from "axios";
-// import axios from "axios";
 
 export const Form = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +30,6 @@ export const Form = () => {
     ));
 
     setCountryOptions(options);
-    console.log(options);
   }, [allCountries]);
 
   const handleInputChange = (e) => {
@@ -67,11 +66,11 @@ export const Form = () => {
   };
 
   return (
-    <section>
-      <h1>Formulario para Crear Actividad Turística</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nombre:</label>
+    <section className={styles.container}>
+      <h1>Create your own tourist activity</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.name}>
+          <label htmlFor="name">Activity name:</label>
           <input
             type="text"
             id="name"
@@ -82,14 +81,15 @@ export const Form = () => {
 
           <span>{formErrors.name}</span>
         </div>
-        <div>
-          <label htmlFor="difficulty">Dificultad:</label>
+        <div className={styles.dif}>
+          <label htmlFor="difficulty">Select the difficulty:</label>
           <select
             id="difficulty"
             name="difficulty"
             value={formData.difficulty}
             onChange={handleInputChange}
           >
+            <option value="">Difficulty</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -99,14 +99,15 @@ export const Form = () => {
           <span>{formErrors.difficulty}</span>
         </div>
 
-        <div>
-          <label htmlFor="season">Temporada:</label>
+        <div className={styles.season}>
+          <label htmlFor="season">Select a season:</label>
           <select
             id="season"
             name="season"
             value={formData.season}
             onChange={handleInputChange}
           >
+            <option value="">Season</option>
             <option value="summer">Summer</option>
             <option value="autumn">Autumn</option>
             <option value="winter">Winter</option>
@@ -114,8 +115,8 @@ export const Form = () => {
           </select>
           <span>{formErrors.season && formErrors.season}</span>
         </div>
-        <div>
-          <label htmlFor="countries">Países:</label>
+        <div className={styles.countries}>
+          <label htmlFor="countries">Select one or more countries:</label>
           <select
             id="countries"
             name="countries"
@@ -126,7 +127,7 @@ export const Form = () => {
           </select>
           <span>{formErrors.countries}</span>
         </div>
-        <button type="submit">Crear Actividad Turística</button>
+        <button type="submit">Create</button>
       </form>
     </section>
   );
