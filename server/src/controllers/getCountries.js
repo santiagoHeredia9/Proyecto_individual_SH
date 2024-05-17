@@ -2,12 +2,16 @@ const { Country } = require("../db");
 
 const getCountries = async (req, res) => {
   try {
+    const limit = parseInt(req.query.limit, 10) || 10;
     const countries = await Country.findAll({
-      attributes: ["id", "name", "flag", "continent", "population"]
+      limit,
+      attributes: ["id", "name", "flag", "continent", "population"], 
     });
-    res.status(200).json(countries);
+
+    return res.status(200).json(countries);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    return res.status(500).json({ message: error.message });
   }
 };
 
