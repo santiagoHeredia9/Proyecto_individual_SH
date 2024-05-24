@@ -39,7 +39,6 @@ export const reducer = (state = initialState, action) => {
       };
 
     case BY_NAME:
-      // eslint-disable-next-line no-case-declarations
       const newCountries = action.payload.filter(
         (newCountry) =>
           !state.countries.some((country) => country.id === newCountry.id)

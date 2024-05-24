@@ -7,7 +7,7 @@ const getActivities = async (req, res) => {
     });
 
     if (activities.length === 0) {
-      return res.status(404).json({ message: "There is not activities yet" });
+      return res.status(200).json([]);
     }
     res.status(200).json(activities);
   } catch (error) {

@@ -4,17 +4,16 @@
   transition: all 0.4s ease-in;
   padding: 0;
   margin: 0;
- 
 }
 
-.image{
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 7px rgb(78, 199, 243);
-    padding: 50px;
-    transition: all 0.4s ease-in;
-    &:hover {
-        transform: scale(1.1);
-      }
+.image {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 7px rgb(78, 199, 243);
+  padding: 50px;
+  transition: all 0.4s ease-in;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .container {
@@ -30,8 +29,6 @@
 .welcome {
   text-align: left;
   max-width: 700px;
- 
-
 }
 
 .welcome p {
@@ -43,9 +40,9 @@
   font-size: 4rem;
 }
 
-.welcome strong{
-    color: rgb(15, 169, 226);
-  }
+.welcome strong {
+  color: rgb(15, 169, 226);
+}
 
 .button {
   width: 100px;
@@ -61,5 +58,94 @@
     cursor: pointer;
     background-color: rgb(0, 105, 162);
     transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .landingImage {
+    width: 400px;
+    opacity: 0.5;
+    height: 180px;
+    transition: all 0.4s ease-in;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 220px;
+    right: 30px;
+  }
+
+  .image {
+    border-radius: 10px;
+    box-shadow: none;
+    padding-top: 50px;
+    &:hover {
+      transform: inherit;
+    }
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .welcome {
+    text-align: center;
+    padding-top: 130px;
+  }
+  .welcome p {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10px;
+    max-width: 400px;
+  }
+
+  .welcome h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .landingImage {
+    width: 400px;
+    opacity: 0.5;
+    height: 180px;
+    transition: all 0.4s ease-in;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 220px;
+    right: 40px;
+
+  }
+
+  .image {
+    border-radius: 10px;
+    box-shadow: none;
+    padding-top: 50px;
+    &:hover {
+      transform: inherit;
+    }
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .welcome {
+    text-align: center;
+    padding-top: 200px;
+  }
+  .welcome p {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10px;
+    max-width: 400px;
+  }
+
+  .welcome h1 {
+    font-size: 2rem;
   }
 }

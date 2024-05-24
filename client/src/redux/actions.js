@@ -29,16 +29,15 @@ export const fetchCountries = () => {
 export const byName = (name) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
+      const { data } = await axios.get(
         `http://localhost:3001/countries/name?name=${name}`
       );
-
-      return dispatch({
+      dispatch({
         type: BY_NAME,
         payload: data,
       });
     } catch (error) {
-      console.error(error.message);
+      return { error: error.response.data };
     }
   };
 };
@@ -100,10 +99,10 @@ export const getActivities = () => {
 };
 
 export const deleteActivity = (id) => {
- return{
-  type: DELETE_ACTIVITY,
-  payload: id
- }
+  return {
+    type: DELETE_ACTIVITY,
+    payload: id,
+  };
 };
 
 export const orderCountries = (order, direction) => {

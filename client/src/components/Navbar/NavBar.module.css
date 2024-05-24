@@ -8,6 +8,28 @@
   z-index: 1000;
 }
 
+@media screen and (max-width: 550px) {
+  .container {
+    flex-direction: column;
+    gap: 0px;
+    padding-top: 10px;
+  }
+  .navItem {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    gap: 0px;
+    padding-top: 10px;
+  }
+  .navItem {
+    text-align: center;
+  }
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -29,6 +51,11 @@
     transform: scale(1.1);
     cursor: pointer;
   }
+}
+
+
+.active{
+  border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 a {

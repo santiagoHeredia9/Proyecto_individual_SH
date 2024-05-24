@@ -15,8 +15,7 @@ const getByName = async (req, res) => {
         },
       },
     });
-
-    if (!countryName) {
+    if (!countryName || countryName.length === 0) {
       return res.status(404).json({ message: `No countries found with name: ${name}` });
     }
 

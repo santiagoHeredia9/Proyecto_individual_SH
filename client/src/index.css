@@ -1,13 +1,21 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-
 }
 
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: radial-gradient(circle, #fada9f,#fada9f, #8c4913 );
+  background: radial-gradient(circle, #fada9f, #fada9f, #8c4913);
 }
 
+@media screen and (max-width: 550px) {
+  body {
+    background: radial-gradient(circle, #fada9f, #fada9f, #dc9861);
+  }
+}
+@media screen and (max-width: 800px) {
+  body {
+    background: radial-gradient(circle, #fada9f, #fada9f, #dc9861);
+  }
+}

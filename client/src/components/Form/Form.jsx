@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { validate } from "./validate";
 import styles from "./Form.module.css";
 import axios from "axios";
+import Error from "../Icons/Error";
+import Check from "../Icons/Check";
 
 export const Form = () => {
   const [formData, setFormData] = useState({
@@ -38,6 +40,13 @@ export const Form = () => {
       ...formData,
       [name]: value,
     });
+
+    setFormErrors(
+      validate({
+        ...formData,
+        [name]: value,
+      })
+    );
   };
 
   const handleCountrySelection = (e) => {
@@ -46,12 +55,19 @@ export const Form = () => {
       ...formData,
       countries: [...formData.countries, value],
     });
+
+    setFormErrors(
+      validate({
+        ...formData,
+        countries: [...formData.countries, value],
+      })
+    );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = validate(formData);
-    setFormErrors(errors);
+    const errors = formErrors;
+
 
     if (Object.keys(errors).length === 0) {
       axios
@@ -60,15 +76,17 @@ export const Form = () => {
           alert("Activity was created successfully");
         })
         .catch((error) => {
-          console.error("Error creating activity:", error);
+          console.error( error.message);
         });
+    } else{
+      alert("Please complete the validation")
     }
   };
 
   return (
     <section className={styles.container}>
-      <h1>Create your own tourist activity</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
+        <h2>Create your own tourist activity</h2>
         <div className={styles.name}>
           <label htmlFor="name">Activity name:</label>
           <input
@@ -78,8 +96,6 @@ export const Form = () => {
             value={formData.name}
             onChange={handleInputChange}
           />
-
-          <span>{formErrors.name}</span>
         </div>
         <div className={styles.dif}>
           <label htmlFor="difficulty">Select the difficulty:</label>
@@ -96,7 +112,6 @@ export const Form = () => {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <span>{formErrors.difficulty}</span>
         </div>
 
         <div className={styles.season}>
@@ -113,7 +128,6 @@ export const Form = () => {
             <option value="winter">Winter</option>
             <option value="spring">Spring</option>
           </select>
-          <span>{formErrors.season && formErrors.season}</span>
         </div>
         <div className={styles.countries}>
           <label htmlFor="countries">Select one or more countries:</label>
@@ -125,10 +139,55 @@ export const Form = () => {
           >
             {countryOptions}
           </select>
-          <span>{formErrors.countries}</span>
         </div>
         <button type="submit">Create</button>
       </form>
+
+      <aside className={styles.validations}>
+        <div>
+          <p>The activity name must have 5 or more characters</p>
+          <p>
+            {formErrors.name ? (
+              <Error className={styles.error} />
+            ) : (
+              <Check className={styles.check} />
+            )}
+          </p>
+        </div>
+
+        <div>
+          <p>Must select a difficulty</p>
+          <p>
+            {formErrors.difficulty ? (
+              <Error className={styles.error} />
+            ) : (
+              <Check className={styles.check} />
+            )}
+          </p>
+        </div>
+
+        <div>
+          <p>Must select a season</p>
+          <p>
+            {formErrors.season ? (
+              <Error className={styles.error} />
+            ) : (
+              <Check className={styles.check} />
+            )}
+          </p>
+        </div>
+
+        <div>
+          <p>Must select at least one country</p>
+          <p>
+            {formErrors.countries ? (
+              <Error className={styles.error} />
+            ) : (
+              <Check className={styles.check} />
+            )}
+          </p>
+        </div>
+      </aside>
     </section>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import styles from "./Landing.module.css";
 import { Link } from "react-router-dom";
 

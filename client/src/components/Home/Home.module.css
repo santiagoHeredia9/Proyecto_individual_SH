@@ -45,3 +45,38 @@
   width: 30px;
   height: 30px;
 }
+
+
+@media screen and (max-width: 550px) {
+  .cardContainer {
+    
+    height: 300vh;
+    
+  }
+  
+
+
+  .changer button{
+    cursor: pointer;
+    color: rgb(24, 24, 24);
+    font-size: 1.5rem;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .cardContainer {
+    
+    height: 300vh;
+    
+  }
+  
+
+
+  .changer button{
+    cursor: pointer;
+    color: rgb(24, 24, 24);
+    font-size: 1.5rem;
+  }
+}
+
