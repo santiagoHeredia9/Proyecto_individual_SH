@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 
 export const BY_ID = "BY_ID";
@@ -97,11 +98,17 @@ export const getActivities = () => {
     }
   };
 };
-
 export const deleteActivity = (id) => {
-  return {
-    type: DELETE_ACTIVITY,
-    payload: id,
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/activities/${id}`);
+      return dispatch({
+        type: DELETE_ACTIVITY,
+        payload: id,
+      });
+    }catch (error) {
+      console.error(error.message);
+    }
   };
 };
 

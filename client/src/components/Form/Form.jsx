@@ -34,6 +34,10 @@ export const Form = () => {
     setCountryOptions(options);
   }, [allCountries]);
 
+  useEffect(() => {
+    setFormErrors(validate(formData));
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -68,7 +72,6 @@ export const Form = () => {
     e.preventDefault();
     const errors = formErrors;
 
-
     if (Object.keys(errors).length === 0) {
       axios
         .post("http://localhost:3001/activities", formData)
@@ -76,10 +79,10 @@ export const Form = () => {
           alert("Activity was created successfully");
         })
         .catch((error) => {
-          console.error( error.message);
+          console.error(error.message);
         });
-    } else{
-      alert("Please complete the validation")
+    } else {
+      alert("Please complete the validation");
     }
   };
 
