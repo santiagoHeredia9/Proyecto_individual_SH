@@ -13,7 +13,7 @@ const firstFetch = async () => {
           ? country.capital[0]
           : "N/A";
 
-      await Country.create({
+      await Country.upsert({
         id: country.cca3,
         name: country.name.common,
         flag: country.flags.png,
