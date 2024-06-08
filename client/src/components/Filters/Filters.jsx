@@ -19,6 +19,7 @@ export const Filters = () => {
     const [order, direction] = e.target.value.split("_");
     dispatch(orderCountries(order, direction));
   };
+  
   return (
     <article className={styles.container}>
       <select className={styles.select1} onChange={handleFilter}>

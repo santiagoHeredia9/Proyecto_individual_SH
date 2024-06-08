@@ -38,6 +38,12 @@ export const reducer = (state = initialState, action) => {
         ),
       };
 
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+
     case BY_NAME:
       const newCountries = action.payload.filter(
         (newCountry) =>
@@ -45,14 +51,9 @@ export const reducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        countries: [...state.countries, ...newCountries],
-        allCountries: [...state.allCountries, ...newCountries],
-      };
-
-    case CHANGE_PAGE:
-      return {
-        ...state,
-        currentPage: action.payload,
+        countries: [ ...newCountries],
+        allCountries: [ ...newCountries],
+        currentPage: 1,
       };
 
     case BY_ID:
@@ -73,6 +74,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: state.allCountries,
+        currentPage: 1,
       };
 
     case GET_ACTIVITIES:

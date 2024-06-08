@@ -8,15 +8,16 @@ export const Activity = () => {
   const dispatch = useDispatch();
   const activities = useSelector((state) => state.activities);
 
-
+  // Obtener actividades
   useEffect(() => {
     dispatch(getActivities());
-  }, []);
+  }, [activities.length]);
 
+  //Borrar actividad
   const deleteActivities = (id) => {
     dispatch(deleteActivity(id));
   };
-
+  // Funcion de dificultad
   const getDifficultyStyle = (difficulty) => {
     switch (difficulty) {
       case "1":
@@ -33,6 +34,7 @@ export const Activity = () => {
   };
 
   return (
+    // Mapear actividades si existen, si no mostrar mensaje.
     <div className={styles.container}>
       {Object.keys(activities).length !== 0 ? (
         activities.map((activity) => (

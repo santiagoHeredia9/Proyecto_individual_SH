@@ -7,6 +7,7 @@ import Error from "../Icons/Error";
 import Check from "../Icons/Check";
 
 export const Form = () => {
+  //Estado local para guardar los datos del formulario
   const [formData, setFormData] = useState({
     name: "",
     difficulty: "",
@@ -14,16 +15,20 @@ export const Form = () => {
     countries: [],
   });
 
+  //Estado local para guardar los errores del formulario
   const [formErrors, setFormErrors] = useState({
     name: "",
     difficulty: "",
     season: "",
     countries: [],
   });
+
+  //Estado local para guardar las opciones de países
   const [countryOptions, setCountryOptions] = useState([]);
 
   const allCountries = useSelector((state) => state.allCountries);
 
+  //Llenar las opciones de países
   useEffect(() => {
     const options = allCountries.map((country) => (
       <option key={country.id} value={country.id}>
@@ -34,10 +39,12 @@ export const Form = () => {
     setCountryOptions(options);
   }, [allCountries]);
 
+  //Función para validar los campos del formulario
   useEffect(() => {
     setFormErrors(validate(formData));
   }, []);
 
+  //Función para controlar el formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({

@@ -5,26 +5,20 @@ import { byId } from "../../redux/actions";
 import styles from "./CountryDetail.module.css";
 
 export const CountryDetail = () => {
+
   const country = useSelector((state) => state.countryDetail);
-
   const dispatch = useDispatch();
-
   const { id } = useParams();
 
-  function formatearPoblacion(numero) {
-    if (numero >= 1000000) {
-      return (
-        (numero / 1000000).toLocaleString("es-ES", {
-          minimumFractionDigits: 3,
-        }) + "M"
-      );
-    } else {
-      return (
-        (numero / 1000).toLocaleString("es-ES", { minimumFractionDigits: 3 }) +
-        "K"
-      );
+  //Funcion para hacer las legible el numero de habitantes
+  const formatearPoblacion = (number) => {
+    if (number >= 1000000) {
+      return (number / 1000000).toFixed(1) + 'M';
+    } else if (number >= 1000) {
+      return (number / 1000).toFixed(1) + 'k';
     }
-  }
+    return number;
+  };
 
   useEffect(() => {
     dispatch(byId(id));

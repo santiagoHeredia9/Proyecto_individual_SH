@@ -2,10 +2,8 @@ const { Country } = require("../db");
 
 const getCountries = async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit, 10) || 10;
     const countries = await Country.findAll({
-      limit,
-      attributes: ["id", "name", "flag", "continent", "population"], 
+      attributes: ["id", "name", "flag", "continent", "population"],
     });
 
     return res.status(200).json(countries);

@@ -15,7 +15,7 @@ export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 export const fetchCountries = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios("http://localhost:3001/countries/limited");
+      const { data } = await axios("http://localhost:3001/countries");
 
       return dispatch({
         type: FETCH,
